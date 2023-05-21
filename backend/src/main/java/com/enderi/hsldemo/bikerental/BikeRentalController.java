@@ -1,5 +1,4 @@
-package com.enderi.hsldemo.bikestation;
-
+package com.enderi.hsldemo.bikerental;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("bike-stations")
-public class BikeStationController {
+@RequestMapping("bike-rentals")
+public class BikeRentalController {
     @Autowired
-    private BikeStationRepository bikeStationRepository;
+    private BikeRentalRepository bikeRentalRepository;
 
-    @GetMapping
-    public List<BikeStation> getAll() {
-        return bikeStationRepository.findAll();
+    @GetMapping()
+    public List<BikeRental> getAll() {
+        return this.bikeRentalRepository.findAll();
     }
 }
