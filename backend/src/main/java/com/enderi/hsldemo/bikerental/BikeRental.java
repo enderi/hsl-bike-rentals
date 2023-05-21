@@ -3,113 +3,116 @@ package com.enderi.hsldemo.bikerental;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-
 import java.time.LocalDateTime;
 
 @Entity
 public class BikeRental {
-    @Id
-    private Long id;
-    @Column
-    private LocalDateTime departureTime;
-    @Column
-    private LocalDateTime returnTime;
-    @Column
-    private String departureStationName;
-    @Column
-    private String returnStationName;
-    @Column
-    private Long departureStationId;
-    @Column
-    private Long returnStationId;
-    @Column(name = "covered_distance_m")
-    private Long coveredDistance;
-    @Column(name = "duration_sec")
-    private Long duration;
+  @Id private Long id;
+  @Column private LocalDateTime departureTime;
+  @Column private LocalDateTime returnTime;
+  @Column private String departureStationName;
+  @Column private String returnStationName;
+  @Column private Long departureStationId;
+  @Column private Long returnStationId;
 
-    public BikeRental() {}
+  @Column(name = "covered_distance_m")
+  private Long coveredDistance;
 
-    public BikeRental(Long id, LocalDateTime departureTime, LocalDateTime returnTime, String departureStationName, String returnStationName, Long departureStationId, Long returnStationId, Long coveredDistance, Long duration) {
-        this.id = id;
-        this.departureTime = departureTime;
-        this.returnTime = returnTime;
-        this.departureStationName = departureStationName;
-        this.returnStationName = returnStationName;
-        this.departureStationId = departureStationId;
-        this.returnStationId = returnStationId;
-        this.coveredDistance = coveredDistance;
-        this.duration = duration;
-    }
+  @Column(name = "duration_sec")
+  private Long duration;
 
-    public Long getId() {
-        return id;
-    }
+  public BikeRental() {}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public BikeRental(
+      Long id,
+      LocalDateTime departureTime,
+      LocalDateTime returnTime,
+      String departureStationName,
+      String returnStationName,
+      Long departureStationId,
+      Long returnStationId,
+      Long coveredDistance,
+      Long duration) {
+    this.id = id;
+    this.departureTime = departureTime;
+    this.returnTime = returnTime;
+    this.departureStationName = departureStationName;
+    this.returnStationName = returnStationName;
+    this.departureStationId = departureStationId;
+    this.returnStationId = returnStationId;
+    this.coveredDistance = coveredDistance;
+    this.duration = duration;
+  }
 
-    public LocalDateTime getDepartureTime() {
-        return departureTime;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setDepartureTime(LocalDateTime departureTime) {
-        this.departureTime = departureTime;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public LocalDateTime getReturnTime() {
-        return returnTime;
-    }
+  public LocalDateTime getDepartureTime() {
+    return departureTime;
+  }
 
-    public void setReturnTime(LocalDateTime returnTime) {
-        this.returnTime = returnTime;
-    }
+  public void setDepartureTime(LocalDateTime departureTime) {
+    this.departureTime = departureTime;
+  }
 
-    public String getDepartureStationName() {
-        return departureStationName;
-    }
+  public LocalDateTime getReturnTime() {
+    return returnTime;
+  }
 
-    public void setDepartureStationName(String departureStationName) {
-        this.departureStationName = departureStationName;
-    }
+  public void setReturnTime(LocalDateTime returnTime) {
+    this.returnTime = returnTime;
+  }
 
-    public String getReturnStationName() {
-        return returnStationName;
-    }
+  public String getDepartureStationName() {
+    return departureStationName;
+  }
 
-    public void setReturnStationName(String returnStationName) {
-        this.returnStationName = returnStationName;
-    }
+  public void setDepartureStationName(String departureStationName) {
+    this.departureStationName = departureStationName;
+  }
 
-    public Long getDepartureStationId() {
-        return departureStationId;
-    }
+  public String getReturnStationName() {
+    return returnStationName;
+  }
 
-    public void setDepartureStationId(Long departureStationId) {
-        this.departureStationId = departureStationId;
-    }
+  public void setReturnStationName(String returnStationName) {
+    this.returnStationName = returnStationName;
+  }
 
-    public Long getReturnStationId() {
-        return returnStationId;
-    }
+  public Long getDepartureStationId() {
+    return departureStationId;
+  }
 
-    public void setReturnStationId(Long returnStationId) {
-        this.returnStationId = returnStationId;
-    }
+  public void setDepartureStationId(Long departureStationId) {
+    this.departureStationId = departureStationId;
+  }
 
-    public Long getCoveredDistance() {
-        return coveredDistance;
-    }
+  public Long getReturnStationId() {
+    return returnStationId;
+  }
 
-    public void setCoveredDistance(Long coveredDistance) {
-        this.coveredDistance = coveredDistance;
-    }
+  public void setReturnStationId(Long returnStationId) {
+    this.returnStationId = returnStationId;
+  }
 
-    public Long getDuration() {
-        return duration;
-    }
+  public Long getCoveredDistance() {
+    return coveredDistance;
+  }
 
-    public void setDuration(Long duration) {
-        this.duration = duration;
-    }
+  public void setCoveredDistance(Long coveredDistance) {
+    this.coveredDistance = coveredDistance;
+  }
+
+  public Long getDuration() {
+    return duration;
+  }
+
+  public void setDuration(Long duration) {
+    this.duration = duration;
+  }
 }
