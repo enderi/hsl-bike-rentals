@@ -20,8 +20,18 @@ dependencies {
 	implementation 'org.flywaydb:flyway-mysql'
 	implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.5'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// https://projectlombok.org
+	compileOnly 'org.projectlombok:lombok:1.18.26'
+	annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+	// https://mvnrepository.com/artifact/com.univocity/univocity-parsers
+	implementation group: 'com.univocity', name: 'univocity-parsers', version: '2.9.1'
+
+
 }
 
 tasks.named('test') {

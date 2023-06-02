@@ -1,20 +1,20 @@
 /* DATA SOURCE: https://public-transport-hslhrt.opendata.arcgis.com/ */
 
-DROP TABLE IF EXISTS bike_stations;
-CREATE TABLE bike_stations(
-   FID        INTEGER  NOT NULL PRIMARY KEY 
-  ,ID         INTEGER  NOT NULL
-  ,Nimi       VARCHAR(100) NOT NULL
-  ,Namn       VARCHAR(100) NOT NULL
-  ,Name       VARCHAR(100) NOT NULL
-  ,Osoite     VARCHAR(100) NOT NULL
-  ,Adress     VARCHAR(100) NOT NULL
-  ,Kaupunki   VARCHAR(100)
-  ,Stad       VARCHAR(100)
-  ,Operaattor VARCHAR(100)
-  ,Kapasiteet INTEGER  NOT NULL
-  ,x          NUMERIC(14,12) NOT NULL
-  ,y          NUMERIC(14,12) NOT NULL
+drop table if exists bike_stations;
+create table bike_stations(
+   fid        integer  not null primary key
+  ,id         integer  not null
+  ,nimi       varchar(100) not null
+  ,namn       varchar(100) not null
+  ,name       varchar(100) not null
+  ,osoite     varchar(100) not null
+  ,adress     varchar(100) not null
+  ,kaupunki   varchar(100)
+  ,stad       varchar(100)
+  ,operaattor varchar(100)
+  ,kapasiteet integer  not null
+  ,x          numeric(14,12) not null
+  ,y          numeric(14,12) not null
 );
 INSERT INTO bike_stations(FID,ID,Nimi,Namn,Name,Osoite,Adress,Kaupunki,Stad,Operaattor,Kapasiteet,x,y) VALUES
  (1,501,'Hanasaari','Hanaholmen','Hanasaari','Hanasaarenranta 1','Hanaholmsstranden 1','Espoo','Esbo','CityBike Finland',10,24.840319,60.16582)

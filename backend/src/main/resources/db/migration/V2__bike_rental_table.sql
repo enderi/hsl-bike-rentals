@@ -1,12 +1,11 @@
-DROP TABLE IF EXISTS BIKE_RENTALS;
-CREATE TABLE IF NOT EXISTS BIKE_RENTALS(
-  ID                      INTEGER  NOT NULL PRIMARY KEY
-  ,DEPARTURE_TIME         DATETIME NOT NULL
-  ,RETURN_TIME            DATETIME NOT NULL
-  ,DEPARTURE_STATION_ID   INTEGER  NOT NULL
-  ,DEPARTURE_STATION_NAME VARCHAR(100) NOT NULL
-  ,RETURN_STATION_ID      INTEGER  NOT NULL
-  ,RETURN_STATION_NAME    VARCHAR(100) NOT NULL
-  ,COVERED_DISTANCE_M     INTEGER  NOT NULL
-  ,DURATION_SEC           INTEGER  NOT NULL
+drop table if exists bike_rentals;
+create table if not exists bike_rentals(
+  id                      int(11) not null auto_increment
+  ,departure_time         datetime not null
+  ,return_time            datetime not null
+  ,departure_station_id   integer  not null
+  ,return_station_id      integer  not null
+  ,covered_distance_m     integer  not null
+  ,duration_sec           integer  not null
+  ,primary key (id)
 );

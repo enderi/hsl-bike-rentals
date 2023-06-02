@@ -1,0 +1,9 @@
+﻿Departure,Return,Departure station id,Departure station name,Return station id,Return station name,Covered distance (m),Duration (sec.)
+2021-04-30T23:59:54,2021-05-01T00:08:15,016,Liisanpuistikko,002,Laivasillankatu,1885,499
+2021-04-30T23:59:52,2021-05-01T00:16:16,020,Kaisaniemenpuisto,112,Rautatieläisenkatu,3359,984
+2021-04-30T23:59:52,2021-05-01T00:13:40,004,Viiskulma,033,Kauppakorkeakoulu,1633,824
+2021-04-30T23:59:43,2021-05-01T00:23:22,133,Paavalinpuisto,241,Agronominkatu,6459,1418
+2021-04-30T23:59:41,2021-05-01T00:16:15,020,Kaisaniemenpuisto,112,Rautatieläisenkatu,3210,990
+2021-04-30T23:59:32,2021-05-01T00:10:02,573,Urheilupuisto (M),527,Otsolahti,2502,630
+2021-04-30T23:59:29,2021-05-01T00:15:06,123,Näkinsilta,135,Velodrominrinne,3681,936
+2021-04-30T23:59:22,2021-05-01T00:25:07,161,Eteläesplanadi,041,Ympyrätalo,1819,1541
