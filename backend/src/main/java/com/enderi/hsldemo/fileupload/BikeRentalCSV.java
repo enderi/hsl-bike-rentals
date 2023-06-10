@@ -1,4 +1,4 @@
-package com.enderi.hsldemo.bikerental;
+package com.enderi.hsldemo.bikerental.parser;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -8,21 +8,13 @@ import java.util.Arrays;
 @Getter
 @ToString
 public class BikeRentalCSV {
-
   private final String departureTime;
-
   private final String returnTime;
-
   private final String departureStationId;
-
   private final String departureStationName;
-
   private final String returnStationId;
-
   private final String returnStationName;
-
   private final String coveredDistanceInMeters;
-
   private final String durationInSeconds;
 
   public BikeRentalCSV(String[] split) {

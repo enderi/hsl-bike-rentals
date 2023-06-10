@@ -2,24 +2,20 @@
 </style>
 
 <div class="container">
-  <!-- <div class="row">
-    <div class="col">
-      <h2>My app</h2>
+  <div class="row mt-3">
+    <div class="col-12">
+      <h2>Helsinki Bike Rentals Per Station</h2>
     </div>
-    <div class="col"><input type="file" class="file-upload" (change)="this.fileSelected($event)"></div>
   </div>
   <div class="row">
-    <div class="col-4">
-      <div *ngFor="let station of stations">
-        <button class="btn btn-link">{{station.name}}</button>
-      </div>
+    <div class="col-12" style="margin:0; padding:0; border: 2px solid darkgray;">
+      <app-map (mapEventEmitter)="mapEvent($event)"></app-map>
     </div>
-    <div class="col-8">
-      <div class="map-container" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)" [leafletLayersControl]="layersControl">
-      </div>
+    <div class="col-12 mt-3">
+      <app-station-details></app-station-details>
     </div>
-  </div> -->
-  <div id="map"></div>
+  </div>
+
 </div>
 
 <router-outlet></router-outlet>

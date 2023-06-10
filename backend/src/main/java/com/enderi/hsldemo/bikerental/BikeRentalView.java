@@ -1,4 +1,4 @@
-package com.enderi.hsldemo.bikerental;
+package com.enderi.hsldemo.bikerental.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
