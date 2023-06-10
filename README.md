@@ -20,8 +20,10 @@ You need to install the usual,
 docker compose up
 ```
 ### Frontend
-```
+```shell
 cd frontend
+# angular CLI is recommended
+npm install -g @angular/cli
 npm install
 ng serve
 ```
@@ -32,6 +34,6 @@ cd backend
 ./gradlew bootRun
 ```
 
-When everything is running, open url [localhost:8080](http://localhost:8080)
+When everything is running, open url [localhost:4200](http://localhost:4200)
 
 For more information, see READMEs in subfolders.
