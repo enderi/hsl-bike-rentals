@@ -13,17 +13,17 @@ public class BikeStation {
     @Column(name = "name")
     private String name;
     @Column(name = "x")
-    private Double longitude;
+    private Double lng;
     @Column(name = "y")
-    private Double latitude;
+    private Double lat;
 
     public BikeStation() {}
 
-    public BikeStation(Long id, String name, Double longitude, Double latitude) {
+    public BikeStation(Long id, String name, Double lng, Double lat) {
         this.id = id;
         this.name = name;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.lng = lng;
+        this.lat = lat;
     }
 
     public Long getId() {
@@ -34,11 +34,11 @@ public class BikeStation {
         return name;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public Double getLng() {
+        return lng;
     }
 
-    public Double getLatitude() {
-        return latitude;
+    public Double getLat() {
+        return lat;
     }
 }

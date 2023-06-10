@@ -1,4 +1,4 @@
-package com.enderi.hsldemo.bikerental.entity;
+package com.enderi.hsldemo.fileupload;
 
 import jakarta.persistence.*;
 import lombok.*;

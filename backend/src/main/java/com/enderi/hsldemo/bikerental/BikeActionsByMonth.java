@@ -1,4 +1,4 @@
-package com.enderi.hsldemo.bikerental.dto;
+package com.enderi.hsldemo.bikerental;
 
 public interface BikeActionsByMonth {
     Long getStationId();

@@ -1,11 +1,10 @@
-package com.enderi.hsldemo.bikerental.parser;
+package com.enderi.hsldemo.fileupload;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.enderi.hsldemo.bikerental.entity.BikeRental;
 import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.Table;
 import org.slf4j.Logger;

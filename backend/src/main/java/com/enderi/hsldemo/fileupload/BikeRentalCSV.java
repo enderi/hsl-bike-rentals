@@ -1,4 +1,4 @@
-package com.enderi.hsldemo.bikerental.parser;
+package com.enderi.hsldemo.fileupload;
 
 import lombok.Getter;
 import lombok.ToString;

@@ -1,6 +1,8 @@
-package com.enderi.hsldemo.bikerental.parser;
+package com.enderi.hsldemo.fileupload;
 
-import com.enderi.hsldemo.bikerental.entity.BikeRental;
+import com.enderi.hsldemo.fileupload.BikeRental;
+import com.enderi.hsldemo.fileupload.BikeRentalCSV;
+import com.enderi.hsldemo.fileupload.BikeRentalMapper;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
 import java.io.InputStream;

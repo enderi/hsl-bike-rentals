@@ -1,8 +1,7 @@
-package com.enderi.hsldemo.bikerental.parser;
+package com.enderi.hsldemo.fileupload;
 
 import java.util.Optional;
 
-import com.enderi.hsldemo.bikerental.entity.BikeRental;
 import com.enderi.hsldemo.util.Parser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
