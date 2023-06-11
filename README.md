@@ -1,4 +1,4 @@
-# HSL Bike Rentals (Open Data Demo)
+# HSL Bike Rentals - Rental/Return Balance (Open Data Demo)
 
 ![image](https://github.com/enderi/hsl-bike-rentals/assets/2479020/f6f7674a-6e1c-47cc-9b67-0dc8a5dfb5c6)
 
