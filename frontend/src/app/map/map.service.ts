@@ -1,18 +1,13 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Subject, forkJoin } from 'rxjs';
-import {
-  StationInfo,
-  addDeparture,
-  addStation,
-  addreturn,
-  getStationIds,
-  getStationTraffic,
-} from '../station-traffic';
 import { BikeStationsService } from '../service/bike-stations.service';
 import { CircleMarker } from 'leaflet';
-import { CustomMarker } from './custom-marker';
+import { MarkerWithProps } from './custom-marker';
 import { MapEvents } from './map-events';
-import { RentalsService } from '../service/rentals.service';
+import {
+  BikeStationHandler,
+  StationInfo,
+} from '../bike-station-handler/bike-stations-handler';
 
 declare module Lex {
   export interface CircleMarkerExtended {
@@ -25,16 +20,16 @@ declare module Lex {
 })
 export class MapService {
   private readonly _events = new Subject<{}>();
-  private readonly _markers = new Subject<CustomMarker[]>();
+  private readonly _markers = new Subject<MarkerWithProps[]>();
 
-  private readonly markersByStationId: { [key: string]: CustomMarker } = {};
+  private readonly markersByStationId: { [key: string]: MarkerWithProps } = {};
   private readonly _selectedStation = new Subject<String>();
 
   get selectedStation() {
     return this._selectedStation;
   }
 
-  private stationSelection: CustomMarker | undefined;
+  private stationSelection: MarkerWithProps | undefined;
 
   get events() {
     return this._events;
@@ -46,8 +41,8 @@ export class MapService {
 
   constructor(
     private ngZone: NgZone,
-    private rentalsService: RentalsService,
-    private bikeStationService: BikeStationsService
+    private bikeStationService: BikeStationsService,
+    private bikeStationHandler: BikeStationHandler
   ) {}
 
   public emit(event: string, options: {}) {
@@ -56,12 +51,16 @@ export class MapService {
 
   initMarkers() {
     forkJoin({
-      stations: this.rentalsService.fetchBikeStations(),
-      rentalsAndReturns: this.rentalsService.fetchRentalsByMonth(1, 1),
+      stations: this.bikeStationService.fetchBikeStations(),
+      rentalsAndReturns: this.bikeStationService.fetchRentalsByMonth(),
     }).subscribe((result) => {
-      result.stations.forEach((st) => addStation(st));
-      result.rentalsAndReturns.rentals.forEach((rent) => addDeparture(rent));
-      result.rentalsAndReturns.returns.forEach((ret) => addreturn(ret));
+      result.stations.forEach((st) => this.bikeStationHandler.addStation(st));
+      result.rentalsAndReturns.rentals.forEach((rent) =>
+        this.bikeStationHandler.addDeparture(rent)
+      );
+      result.rentalsAndReturns.returns.forEach((ret) =>
+        this.bikeStationHandler.addreturn(ret)
+      );
       this.buildMarkers();
     });
   }
@@ -70,15 +69,16 @@ export class MapService {
     this._markers.next(markers);
   }
 
-  public buildMarker(stationId: string): CustomMarker | null {
-    const traffic: StationInfo = getStationTraffic(stationId);
+  public buildMarker(stationId: string): MarkerWithProps | null {
+    const traffic: StationInfo =
+      this.bikeStationHandler.getStationTraffic(stationId);
     if (!traffic || !traffic.info) {
       return null;
     }
     if (traffic.totalDepartures === 0 && traffic.totalReturns === 0) {
       return null;
     }
-    const customMarker = CustomMarker.of(traffic);
+    const customMarker = MarkerWithProps.of(traffic);
 
     customMarker.bindListener('click', () =>
       this.ngZone.run(() => this.selectStation(customMarker))
@@ -99,7 +99,7 @@ export class MapService {
 
   public buildMarkers() {
     const markers: any[] = [];
-    getStationIds().forEach((id) => {
+    this.bikeStationHandler.getStationIds().forEach((id) => {
       const l = this.buildMarker(id);
       if (l) {
         markers.push(l);
@@ -121,7 +121,7 @@ export class MapService {
     this.markersByStationId[id].resetMarkerProps();
   }
 
-  public selectStation(station: CustomMarker) {
+  public selectStation(station: MarkerWithProps) {
     this.stationSelection?.unSelect();
     if (
       this.stationSelection?.stationInfo.info.id === station.stationInfo.info.id

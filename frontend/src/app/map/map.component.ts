@@ -1,8 +1,8 @@
 import * as L from 'leaflet';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { MapService } from './map.service';
 import { MapEvents } from './map-events';
-import { CustomMarker } from './custom-marker';
+import { MarkerWithProps } from './custom-marker';
 
 @Component({
   selector: 'app-map',
@@ -35,15 +35,15 @@ export class MapComponent {
       }
       this.map.flyTo({ lat: event.lat, lng: event.lng }, zoom);
     } else if (event.name === MapEvents.markerMouseOut) {
-      const cm: CustomMarker = event.marker;
+      const cm: MarkerWithProps = event.marker;
       cm.resetMarkerProps();
     } else if (event.name === MapEvents.markerMouseOver) {
-      const cm: CustomMarker = event.marker;
+      const cm: MarkerWithProps = event.marker;
       cm.hover();
     }
   }
 
-  addMarkers(markers: CustomMarker[]) {
+  addMarkers(markers: MarkerWithProps[]) {
     markers.forEach((m) => m.marker.addTo(this.map));
   }
 

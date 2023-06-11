@@ -1,8 +1,8 @@
-import { Meta, StationInfo } from '../station-traffic';
+import { BikeStationMeta } from '../bike-station-handler/bike-stations-handler';
 import { BikeRentalView } from './bike-rental-view';
 
 export interface BikeStationInfo {
-  station: Meta;
+  station: BikeStationMeta;
   rentals: BikeRentalView[];
   returns: BikeRentalView[];
 }

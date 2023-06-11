@@ -1,8 +1,8 @@
 import { CircleMarker } from 'leaflet';
-import { StationInfo } from '../station-traffic';
 import * as L from 'leaflet';
+import { StationInfo } from '../bike-station-handler/bike-stations-handler';
 
-export class CustomMarker {
+export class MarkerWithProps {
   private circleMarker: CircleMarker;
   private station: StationInfo;
   private props: { [key: string]: any };
@@ -13,13 +13,13 @@ export class CustomMarker {
     this.station = station;
   }
 
-  public static of(station: StationInfo): CustomMarker {
-    const props = CustomMarker.calculateProps(station);
+  public static of(station: StationInfo): MarkerWithProps {
+    const props = MarkerWithProps.calculateProps(station);
     const marker = L.circleMarker(
       { lat: station.info.lat, lng: station.info.lng },
       props
     );
-    const customMarker = new CustomMarker(marker, station);
+    const customMarker = new MarkerWithProps(marker, station);
     customMarker.setProps(props);
     return customMarker;
   }
@@ -117,7 +117,7 @@ export class CustomMarker {
     this.resetMarkerProps();
   }
   public unSelect() {
-    this.props = CustomMarker.calculateProps(this.station);
+    this.props = MarkerWithProps.calculateProps(this.station);
     this.resetMarkerProps();
   }
 }

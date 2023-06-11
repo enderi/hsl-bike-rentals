@@ -1,12 +1,14 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { RentalsService } from '../service/rentals.service';
+import { Component, OnDestroy } from '@angular/core';
 import { BikeStationsService } from '../service/bike-stations.service';
-import { Meta, StationInfo, getStation } from '../station-traffic';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { BikeStationInfo } from '../model/bike-station-info';
 import { Chart, registerables } from 'chart.js';
 import { MapService } from '../map/map.service';
 import { MapEvents } from '../map/map-events';
+import {
+  BikeStationHandler,
+  BikeStationMeta,
+} from '../bike-station-handler/bike-stations-handler';
 Chart.register(...registerables);
 
 @Component({
@@ -18,12 +20,13 @@ export class StationDetailsComponent implements OnDestroy {
   private mapService: MapService;
   private selectedStation: Subscription;
   private bikeStationsService: BikeStationsService;
+  private bikeStationHandler: BikeStationHandler;
   private chart!: Chart;
 
   stats: {
     totalReturns: number;
     totalRentals: number;
-    topDestinations: { info: Meta; entries: number }[];
+    topDestinations: { info: BikeStationMeta; entries: number }[];
   } = {
     totalReturns: 0,
     totalRentals: 0,
@@ -32,9 +35,14 @@ export class StationDetailsComponent implements OnDestroy {
 
   stationInfo: BikeStationInfo | undefined;
 
-  constructor(bSService: BikeStationsService, mapService: MapService) {
+  constructor(
+    bSService: BikeStationsService,
+    mapService: MapService,
+    bikeStationHandler: BikeStationHandler
+  ) {
     this.mapService = mapService;
     this.bikeStationsService = bSService;
+    this.bikeStationHandler = bikeStationHandler;
     this.selectedStation = this.bikeStationsService.selectedStation.subscribe(
       (w) => this.change(w)
     );
@@ -44,8 +52,8 @@ export class StationDetailsComponent implements OnDestroy {
     this.selectedStation.unsubscribe();
   }
 
-  clicked(station: Meta) {
-    const stationInfo = getStation(station.id);
+  clicked(station: BikeStationMeta) {
+    const stationInfo = this.bikeStationHandler.getStation(station.id);
     this.mapService.emit(MapEvents.moveToLatLng, {
       lat: stationInfo.info.lat,
       lng: stationInfo.info.lng,
@@ -54,11 +62,11 @@ export class StationDetailsComponent implements OnDestroy {
     this.mapService.highlightStation(station.id);
   }
 
-  mouseover(station: Meta) {
+  mouseover(station: BikeStationMeta) {
     this.mapService.highlightStation(station.id);
   }
 
-  mouseout(station: Meta) {
+  mouseout(station: BikeStationMeta) {
     this.mapService.resetStation(station.id);
   }
 
@@ -98,7 +106,7 @@ export class StationDetailsComponent implements OnDestroy {
         .reverse()
         .map((r) => {
           return {
-            info: getStation(+r[0]).info,
+            info: this.bikeStationHandler.getStation(+r[0]).info,
             entries: r[1],
           };
         }),
