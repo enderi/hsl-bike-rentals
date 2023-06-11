@@ -6,11 +6,10 @@ import { BikeStationInfo } from '../model/bike-station-info';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RentalsService {
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   fetchBikeStations() {
     return this.httpClient.get<Station[]>('/api/bike-stations');

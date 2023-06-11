@@ -15,7 +15,7 @@ describe('MapComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [MapComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     });
     fixture = TestBed.createComponent(MapComponent);
     component = fixture.componentInstance;

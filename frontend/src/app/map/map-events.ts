@@ -1,6 +1,5 @@
 export const MapEvents = {
-    initialized: 'initialized',
-    centerMap: 'centerMap',
-    mouseover: 'mouseover',
-    mouseout: 'mouseout'
-}
+  moveToLatLng: 'moveToLatLng',
+  markerMouseOver: 'markerMouseOver',
+  markerMouseOut: 'markerMouseOut',
+};

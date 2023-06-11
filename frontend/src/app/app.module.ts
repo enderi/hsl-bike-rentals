@@ -10,19 +10,15 @@ import { StationDetailsComponent } from './station-details/station-details.compo
 import { MapComponent } from './map/map.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    StationDetailsComponent,
-    MapComponent
-  ],
+  declarations: [AppComponent, StationDetailsComponent, MapComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    LeafletModule
+    LeafletModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
